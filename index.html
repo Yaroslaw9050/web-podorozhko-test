@@ -63,7 +63,7 @@
     color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false"
     device-orientation-permission-ui="enabled: false">
     <a-assets>
-      <audio id="river" src="./data/audio/Podorozhko_audio.wav" preload="auto"></audio>
+      <audio id="river" src="./data/audio/Podorozhko_audio_19.mp3" preload="auto"></audio>
       <a-asset-item id="avatarModel" src="./data/models/Test_Anim_1.1.gltf"></a-asset-item>
     </a-assets>
 
@@ -80,9 +80,6 @@
     let audioElement
     document.addEventListener("DOMContentLoaded", function () {
       const avatar = document.querySelector("#avatar");
-      avatar.addEventListener('animation-loop', function (event) {
-      console.log('Animation looped!', event);
-      });
       addAudioEntity();
         // animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"  animation-mixer="timeScale: 0.7"
       // TARGET FOUND
@@ -102,7 +99,7 @@
       var scene = document.querySelector('a-scene');
 
       var audioEntity = document.createElement('a-entity');
-      audioEntity.setAttribute('sound', 'src: #river; volume: 1');
+      audioEntity.setAttribute('sound', 'src: #river; volume: 1; loop: true');
 
       audioEntity.setAttribute('position', { x: 0, y: 2, z: -4 });
       audioEntity.setAttribute('rotation', { x: 0, y: 45, z: 0 });
