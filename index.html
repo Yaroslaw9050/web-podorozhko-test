@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" />
-  <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.0.0/dist/aframe-extras.min.js"></script>
 
@@ -43,7 +43,6 @@
     }
   </style>
 </head>
-
 <body>
   <div id="example-scanning-overlay" class="hidden">
     <div class="inner">
@@ -70,40 +69,33 @@
   <script>
     const geparginTarget = document.querySelector("#gepargin-target");
     let audioElement
+    let avatarModel;
     document.addEventListener("DOMContentLoaded", function () {
-      const avatar = document.querySelector("#avatar");
-      avatar.addEventListener('loaded', function () {
-        addAudioEntity();
+      addAudioEntity();
+      const avatar = document.querySelector("#avatar");  
+      const entity = document.querySelector('[sound]'); 
+
+      avatar.addEventListener("model-loaded", (event) => {
+        console.log("loaded!");
+      });
         // animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"  animation-mixer="timeScale: 0.7"
       // TARGET FOUND
       geparginTarget.addEventListener("targetFound", (event) => {
-        let entity = document.querySelector('[sound]');     
         entity.components.sound.playSound();
         avatar.setAttribute('animation-mixer', {});
       });
 
       // TARGET LOST
       geparginTarget.addEventListener("targetLost", (event) => {
-        let entity = document.querySelector('[sound]');
         entity.components.sound.stopSound();
         avatar.removeAttribute('animation-mixer');
       });
-      });
-     
-      
       function addAudioEntity() {
       var scene = document.querySelector('a-scene');
 
       var audioEntity = document.createElement('a-entity');
       audioEntity.setAttribute('sound', 'src: #river; volume: 1; loop: true');
-
-      audioEntity.setAttribute('position', { x: 0, y: 2, z: -4 });
-      audioEntity.setAttribute('rotation', { x: 0, y: 45, z: 0 });
-
       scene.appendChild(audioEntity);
-
-      var audioComponent = audioEntity.components.sound;
-      audioComponent.playSound();
     }
     });
 
