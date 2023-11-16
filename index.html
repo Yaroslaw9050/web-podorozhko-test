@@ -79,13 +79,16 @@
     const geparginTarget = document.querySelector("#gepargin-target");
     let audioElement
     document.addEventListener("DOMContentLoaded", function () {
+      const avatar = document.querySelector("#avatar");
+      avatar.addEventListener('animation-loop', function (event) {
+      console.log('Animation looped!', event);
+      });
       addAudioEntity();
         // animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"  animation-mixer="timeScale: 0.7"
       // TARGET FOUND
       geparginTarget.addEventListener("targetFound", (event) => {
         let entity = document.querySelector('[sound]');     
         entity.components.sound.playSound();
-        const avatar = document.querySelector("#avatar");
         avatar.setAttribute('animation-mixer', {});
       });
 
@@ -93,7 +96,6 @@
       geparginTarget.addEventListener("targetLost", (event) => {
         let entity = document.querySelector('[sound]');
         entity.components.sound.stopSound();
-        const avatar = document.querySelector("#avatar");
         avatar.removeAttribute('animation-mixer');
       });
       function addAudioEntity() {
