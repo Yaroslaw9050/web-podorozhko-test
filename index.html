@@ -55,13 +55,13 @@
     device-orientation-permission-ui="enabled: false">
     <a-assets>
       <audio id="river" src="./data/audio/Podorozhko_audio_15.mp3" preload="auto"></audio>
-      <a-asset-item id="avatarModel" src="./data/models/Test_Anim_0.5_Obsessed.gltf"></a-asset-item>
+      <a-asset-item id="avatarModel" src="./data/models/Test_Anim_0.6_Obsessed.gltf"></a-asset-item>
     </a-assets>
 
     <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
     <a-entity id="gepargin-target" mindar-image-target="targetIndex: 0">
       <a-entity id="target" look-at-camera>
-        <a-entity id="avatar" rotation="0 0 0 " position="0 -0.1 0.1" scale="4 4 4" gltf-model="#avatarModel"></a-entity>
+        <a-entity id="avatar" rotation="90 0 0 " position="0 -0.1 0.1" scale="4 4 4" gltf-model="#avatarModel"></a-entity>
       </a-entity>
     </a-entity>
     </a-entity>
@@ -99,15 +99,15 @@
     }
     });
 
-    AFRAME.registerComponent('look-at-camera', {
-      tick: function () {
-        let camera = document.querySelector('[camera]');
-        let cameraPosition = camera.getAttribute('position');
-        let entityPosition = this.el.getAttribute('position');
-        let lookAtVector = new THREE.Vector3().subVectors(cameraPosition, entityPosition);
-        this.el.object3D.lookAt(entityPosition.clone().add(lookAtVector));
-      }
-    });
+    // AFRAME.registerComponent('look-at-camera', {
+    //   tick: function () {
+    //     let camera = document.querySelector('[camera]');
+    //     let cameraPosition = camera.getAttribute('position');
+    //     let entityPosition = this.el.getAttribute('position');
+    //     let lookAtVector = new THREE.Vector3().subVectors(cameraPosition, entityPosition);
+    //     this.el.object3D.lookAt(entityPosition.clone().add(lookAtVector));
+    //   }
+    // });
   </script>
 </body>
 </html>
