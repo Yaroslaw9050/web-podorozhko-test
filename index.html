@@ -50,12 +50,12 @@
     </div>
   </div>
   <a-scene
-    mindar-image="uiScanning: #example-scanning-overlay; imageTargetSrc: ./data/AR/targets.mind; filterMinCF:0.01; filterBeta: 0.1; missTolerance: 1"
+    mindar-image="uiScanning: #example-scanning-overlay; imageTargetSrc: ./data/AR/targets.mind; filterMinCF:100; filterBeta: 1000; missTolerance: 1"
     color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false"
     device-orientation-permission-ui="enabled: false">
     <a-assets>
       <audio id="river" src="./data/audio/Podorozhko_audio_15.mp3" preload="auto"></audio>
-      <a-asset-item id="avatarModel" src="./data/models/Test_Anim_0.6_Obsessed.gltf"></a-asset-item>
+      <a-asset-item id="avatarModel" src="./data/models/Test_Anim_0.7_Obsessed.gltf"></a-asset-item>
     </a-assets>
 
     <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
