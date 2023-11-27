@@ -99,15 +99,15 @@
     }
     });
 
-    // AFRAME.registerComponent('look-at-camera', {
-    //   tick: function () {
-    //     let camera = document.querySelector('[camera]');
-    //     let cameraPosition = camera.getAttribute('position');
-    //     let entityPosition = this.el.getAttribute('position');
-    //     let lookAtVector = new THREE.Vector3().subVectors(cameraPosition, entityPosition);
-    //     this.el.object3D.lookAt(entityPosition.clone().add(lookAtVector));
-    //   }
-    // });
+    AFRAME.registerComponent('look-at-camera', {
+      tick: function () {
+        let camera = document.querySelector('[camera]');
+        let cameraPosition = camera.getAttribute('position');
+        let entityPosition = this.el.getAttribute('position');
+        let lookAtVector = new THREE.Vector3().subVectors(cameraPosition, entityPosition);
+        this.el.object3D.lookAt(entityPosition.clone().add(lookAtVector));
+      }
+    });
   </script>
 </body>
 </html>
